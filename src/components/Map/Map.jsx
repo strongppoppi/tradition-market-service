@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
 import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
 
 const Map = () => {
+  const [naverMap, setNaverMap] = useState(null);
+  const [markers, setMarkers] = useState(false);
   const mapElement = useRef(null);
 
   useEffect(() => {
@@ -22,19 +24,15 @@ const Map = () => {
         position: naver.maps.Position.TOP_LEFT,
       },
     };
-    const map = new naver.maps.Map(mapElement.current, mapOptions);
 
-    // 지도상에 핀 표시 할 부분
-    new naver.maps.Marker({
-      position: location,
-      map: map,
-    });
+    //naverMap 생성 완료 -> MarketMarker에 전달
+    setNaverMap(new naver.maps.Map(mapElement.current, mapOptions));
   }, []);
 
   return (
     <Wrapper>
       <MapContainer ref={mapElement}/>
-      <MarketMarker />
+      <MarketMarker naverMap={naverMap} setMarkers={setMarkers}/>
     </Wrapper>
   );
 };
@@ -44,6 +42,7 @@ export default Map;
 // styled
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
