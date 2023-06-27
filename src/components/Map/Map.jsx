@@ -27,12 +27,13 @@ const Map = () => {
 
     //naverMap 생성 완료 -> 리렌더링하면서 MarketMarker에 인자로 전달
     setNaverMap(new naver.maps.Map(mapElement.current, mapOptions));
+    console.log('naverMap created');
   }, []);
 
   return (
     <Wrapper>
       <MapContainer ref={mapElement}/>
-      <MarketMarker naverMap={naverMap} setMarkers={setMarkers}/>
+      <MarketMarker naverMap={naverMap} markers={markers} setMarkers={setMarkers}/>
     </Wrapper>
   );
 };
