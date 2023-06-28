@@ -21,7 +21,7 @@ export default MarketInfoCard;
 //styled
 const Wrapper = styled.div`
     position: absolute;
-    bottom: 50px;
+    bottom: 100px;
     left: 50%;
     transform: translate(-50%, 0);
     width: 90%;
