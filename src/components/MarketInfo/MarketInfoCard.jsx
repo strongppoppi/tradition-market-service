@@ -1,27 +1,35 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import MarketDataLoader from "./MarketDataLoader";
+import MarketImageLoader from "./MarketImageLoader";
 
 
 const MarketInfoCard = ({ marketIndex }) => {
-    const [currentMarket, setCurrentMarket] = useState(null);
     const [marketData, setMarketData] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
+
 
     useEffect(() => {
-        setIsLoaded(false);
+        setDataLoaded(false);
+        setImageUrl("");
     }, [marketIndex]);
 
     if (!marketIndex) return (<></>);
 
     return (
         <Wrapper>
-            {isLoaded ?
+            {dataLoaded ?
                 <>
                     <p>{marketData.mrktNm}</p>
                     <p>{marketData.rdnmadr}</p>
+                    { }
+                    <MarketImageContainer>
+                        <MarketImage src={imageUrl} alt="대표사진" />
+                        <MarketImageLoader marketIndex={marketIndex} setImageUrl={setImageUrl} />
+                    </MarketImageContainer>
                 </> :
-                <MarketDataLoader marketIndex={marketIndex} setMarketData={setMarketData} setIsLoaded={setIsLoaded} />}
+                <MarketDataLoader marketIndex={marketIndex} setMarketData={setMarketData} setDataLoaded={setDataLoaded} />}
         </Wrapper>
 
     );
@@ -38,4 +46,14 @@ const Wrapper = styled.div`
     width: 90%;
     height: 200px;
     background-color: #fff;
+`;
+
+const MarketImageContainer = styled.div`
+    width: 100px;
+    height: 100px;
+`;
+
+const MarketImage = styled.img`
+    width: 100px;
+    height: 100px;
 `;
