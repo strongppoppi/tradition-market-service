@@ -9,13 +9,12 @@ const MarketInfoCard = ({ marketIndex }) => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [imageUrl, setImageUrl] = useState("");
 
-
     useEffect(() => {
         setDataLoaded(false);
         setImageUrl("");
     }, [marketIndex]);
 
-    if (!marketIndex) return (<></>);
+    if (!marketIndex) return (<></>);   //markerIndex 값 없으면 invisible
 
     return (
         <Wrapper>
@@ -33,7 +32,6 @@ const MarketInfoCard = ({ marketIndex }) => {
                 </> :
                 <MarketDataLoader marketIndex={marketIndex} setMarketData={setMarketData} setDataLoaded={setDataLoaded} />}
         </Wrapper>
-
     );
 }
 
