@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, } from 'react';
 import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
+import MarketDataLoader from './MarketDataLoader';
 
 const Map = () => {
   const [naverMap, setNaverMap] = useState(null);   //네이버 지도 instance(?)
@@ -28,8 +29,9 @@ const Map = () => {
 
   return (
     <Wrapper>
-      <MapContainer ref={mapElement}/>
-      <MarketMarker naverMap={naverMap} markers={markers} setMarkers={setMarkers}/>
+      <MapContainer ref={mapElement} />
+      <MarketMarker naverMap={naverMap} markers={markers} setMarkers={setMarkers} />
+      <MarketDataLoader />
     </Wrapper>
   );
 };
