@@ -14,7 +14,7 @@ import marketsLocation from "../../markets.json";
 => 일단 markets.json에 key 추가할 것
 */
 
-const MarketDataLoader = () => {
+const MarketDataLoader = ({ marketData, setMarketData }) => {
   const MARKET_KEY = process.env.REACT_APP_MARKET_ID;
   const MARKET_API_URL = `https://api.odcloud.kr/api/15052836/v1/uddi:2253111c-b6f3-45ad-9d66-924fd92dabd7?serviceKey=${MARKET_KEY}&page=1&perPage=1439&returnType=json`;
   const MARKET_STANDARD_API_URL = `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1521&type=json`;
@@ -51,7 +51,9 @@ const MarketDataLoader = () => {
           return res.data.response.body.items;
         })
         .then(items => {  //items: 시장 객체 담은 배열
-          //console.log(items);
+          const newMarketData = [...marketData];
+          newMarketData.push(items);
+          setMarketData(newMarketData);
         })
     } catch (error) {
       console.log(error);

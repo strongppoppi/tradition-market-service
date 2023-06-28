@@ -1,11 +1,16 @@
 import { styled } from "styled-components";
 
 
-const MarketInfoCard = () => {
+const MarketInfoCard = ({ market, marketData }) => {
+    if (!market) return (<></>);
+
+    console.log("marketInfoCard: ", market);
+    //marketData[selectedMarket] -> 표시
+
     return (
         <>
             <Wrapper>
-
+                MarketInfoCard: {market}
             </Wrapper>
         </>
     );

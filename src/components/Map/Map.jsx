@@ -3,7 +3,7 @@ import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
 import MarketDataLoader from '../MarketInfo/MarketDataLoader';
 
-const Map = () => {
+const Map = ({ setSelectedMarket }) => {
   const [naverMap, setNaverMap] = useState(null);   //네이버 지도 instance(?)
   const [markers, setMarkers] = useState([]);     //현재 naverMap에 추가된 marker들 들어있는 배열
   const mapElement = useRef(null);
@@ -30,8 +30,7 @@ const Map = () => {
   return (
     <Wrapper>
       <MapContainer ref={mapElement} />
-      <MarketMarker naverMap={naverMap} markers={markers} setMarkers={setMarkers} />
-      <MarketDataLoader />
+      <MarketMarker naverMap={naverMap} markers={markers} setMarkers={setMarkers} setSelectedMarket={setSelectedMarket} />
     </Wrapper>
   );
 };
