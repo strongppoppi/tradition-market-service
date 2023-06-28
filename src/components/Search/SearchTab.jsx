@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from "styled-components";
-import { FaSearchLocation} from "react-icons/fa";
+import { FaSearchLocation } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 
 const SearchTab = () => {

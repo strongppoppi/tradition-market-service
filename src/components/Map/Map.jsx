@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, } from 'react';
 import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
-import MarketDataLoader from './MarketDataLoader';
+import MarketDataLoader from '../MarketInfo/MarketDataLoader';
 
 const Map = () => {
   const [naverMap, setNaverMap] = useState(null);   //네이버 지도 instance(?)
