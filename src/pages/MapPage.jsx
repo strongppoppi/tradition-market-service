@@ -4,11 +4,10 @@ import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
 import BottomTab from "../components/BottomTab/BottomTab";
 import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
-import MarketDataLoader from "../components/MarketInfo/MarketDataLoader";
+
 
 const MapPage = () => {
   const [selectedMarket, setSelectedMarket] = useState(null);   //선택된 시장(마커)의 key(index)
-  const [marketData, setMarketData] = useState([]);         //API로 불러온 시장 데이터
 
   return (
     <PageWrapper>
@@ -17,7 +16,7 @@ const MapPage = () => {
       <BottomTab
         currentPath="map"
       />
-      <MarketInfoCard market={selectedMarket} marketData={marketData} />
+      <MarketInfoCard marketIndex={selectedMarket} />
     </PageWrapper>
   );
 };
