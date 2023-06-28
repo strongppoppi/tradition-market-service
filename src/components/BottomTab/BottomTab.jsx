@@ -1,16 +1,29 @@
 import React from 'react';
 import { styled } from "styled-components";
+import { useNavigate } from "react-router";
 
-const BottomTab = () => {
+const BottomTab = ({currentPath}) => {
+  const navigate = useNavigate();
+
+  const handleButton = (path) => {
+    navigate(path);
+  };
+
   return (
     <Wrapper>
-      <TabContainer>
+      <TabContainer
+        onClick={() => handleButton("/home")}
+      >
         <TabButton></TabButton>
       </TabContainer>
-      <TabContainer>
+      <TabContainer
+        onClick={() => handleButton("/map")}
+      >
         <TabButton></TabButton>
       </TabContainer>
-      <TabContainer>
+      <TabContainer
+        onClick={() => handleButton("/mypage")}
+      >
         <TabButton></TabButton>
       </TabContainer>
     </Wrapper>
