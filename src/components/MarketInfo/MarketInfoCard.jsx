@@ -21,13 +21,15 @@ const MarketInfoCard = ({ marketIndex }) => {
         <Wrapper>
             {dataLoaded ?
                 <>
-                    <p>{marketData.mrktNm}</p>
-                    <p>{marketData.rdnmadr}</p>
-                    { }
-                    <MarketImageContainer>
-                        <MarketImage src={imageUrl} alt="대표사진" />
+                    <InfoContainer>
+                        <MarketName>{marketData.mrktNm}</MarketName>
+                        <MarketAddress>{marketData.rdnmadr}</MarketAddress>
+                        <StoreNumber>{marketData.storNumber}</StoreNumber>
+                    </InfoContainer>
+                    <ImageContainer>
+                        {imageUrl != "" ? <MarketImage src={imageUrl} alt={marketData.mrktNm + " 대표사진"} /> : null}
                         <MarketImageLoader marketIndex={marketIndex} setImageUrl={setImageUrl} />
-                    </MarketImageContainer>
+                    </ImageContainer>
                 </> :
                 <MarketDataLoader marketIndex={marketIndex} setMarketData={setMarketData} setDataLoaded={setDataLoaded} />}
         </Wrapper>
@@ -40,17 +42,35 @@ export default MarketInfoCard;
 //styled
 const Wrapper = styled.div`
     position: absolute;
-    bottom: 100px;
+    bottom: 150px;
     left: 50%;
     transform: translate(-50%, 0);
     width: 90%;
-    height: 200px;
+    height: 100px;
     background-color: #fff;
+    display: flex;
+    flex-direction: row;
 `;
 
-const MarketImageContainer = styled.div`
+const InfoContainer = styled.div`
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+`;
+
+const MarketName = styled.p`
+`;
+
+const StoreNumber = styled.p`
+`;
+
+const MarketAddress = styled.p`
+`;
+
+const ImageContainer = styled.div`
     width: 100px;
     height: 100px;
+    background-color: lightgrey;
 `;
 
 const MarketImage = styled.img`
