@@ -33,17 +33,21 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px 15px;
+  margin-bottom: 30px;
 `;
 
 const ButtonContainer = styled.button`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  background-color: #000;
 `;
 
 const ButtonText = styled.h3`
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
 `;

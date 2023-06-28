@@ -1,18 +1,18 @@
 import React from 'react';
 import PageWrapper from "../components/PageWrapper/PageWrapper";
-import SplashBody from "../components/Splash/SplashBody";
+import OnBoarding from "../components/OnBoarding/OnBoarding";
 import LongButton from "../components/Button/LongButton";
 
-const SplashPage = () => {
+const OnBoardingPage = () => {
   return (
     <PageWrapper>
-      <SplashBody />
+      <OnBoarding />
       <LongButton
-        text="시장 가장!"
-        navigationPath="/onBoarding"
+        text="알겠어요!"
+        navigationPath="/main"
       />
     </PageWrapper>
   );
 };
 
-export default SplashPage;
+export default OnBoardingPage;
