@@ -4,6 +4,7 @@ import PageWrapper from "../components/PageWrapper/PageWrapper";
 import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
 import BottomTab from "../components/BottomTab/BottomTab";
+import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
       <Map />
       <SearchTab />
       <BottomTab />
+      <MarketInfoCard />
     </PageWrapper>
   );
 };
