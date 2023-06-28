@@ -1,11 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, } from 'react';
 import { styled } from "styled-components";
 import { FaSearchLocation } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 
-import { useMyLocation } from "../../hooks/useMyLocation";
+import { useMyLocationStore } from "../../store/store";
 
-const SearchTab = () => {
+const SearchTab = ({naverMap, myCurrentLocation, setMyCurrentLocation}) => {
+  const { addMyLocation } = useMyLocationStore();
+
+  useEffect(() => {
+    const { naver } = window;
+    if (naverMap) {
+      console.log("useState: ", myCurrentLocation);
+      addMyLocation(myCurrentLocation);
+      var newCenter = new naver.maps.LatLng(myCurrentLocation.latitude, myCurrentLocation.longitude);
+      naverMap.setCenter(newCenter);
+    }
+  }, [myCurrentLocation]);
+
+
+  const fetchMyLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setMyCurrentLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      window.alert("현재위치를 알수 없습니다.");
+    }
+  };
+
   return (
     <Wrapper>
       <SearchContainer>
@@ -18,7 +44,7 @@ const SearchTab = () => {
       </SearchContainer>
       <MyLocationContainer>
         <ButtonContainer
-          onClick={useMyLocation}
+          onClick={fetchMyLocation}
         >
           <FaLocationCrosshairs className="myLocationIcon" size={25} color="#212529" />
         </ButtonContainer>
