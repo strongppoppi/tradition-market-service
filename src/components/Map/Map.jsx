@@ -3,8 +3,7 @@ import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
 import MarketDataLoader from '../MarketInfo/MarketDataLoader';
 
-const Map = ({ naverMap, setNaverMap, setSelectedMarket }) => {
-  const [markers, setMarkers] = useState([]);     //현재 naverMap에 추가된 marker들 들어있는 배열
+const Map = ({ naverMap, setNaverMap, markers, setMarkers, setSelectedMarket }) => {
   const mapElement = useRef(null);
 
   useEffect(() => {

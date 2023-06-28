@@ -5,16 +5,23 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 
 import { useMyLocationStore } from "../../store/store";
 
-const SearchTab = ({naverMap, myCurrentLocation, setMyCurrentLocation}) => {
+const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurrentLocation}) => {
+  const { naver } = window;
   const { addMyLocation } = useMyLocationStore();
 
   useEffect(() => {
-    const { naver } = window;
     if (naverMap) {
       console.log("useState: ", myCurrentLocation);
       addMyLocation(myCurrentLocation);
       var newCenter = new naver.maps.LatLng(myCurrentLocation.latitude, myCurrentLocation.longitude);
+      var newMarkers = [...markers];
+      var newMyLocationMarker = new naver.maps.Marker({
+        position: newCenter,
+        map: naverMap,
+      });
+      newMarkers.push(newMyLocationMarker);
       naverMap.setCenter(newCenter);
+      setMarkers(newMarkers);
     }
   }, [myCurrentLocation]);
 
