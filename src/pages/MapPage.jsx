@@ -4,7 +4,7 @@ import PageWrapper from "../components/PageWrapper/PageWrapper";
 import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
 import BottomTab from "../components/BottomTab/BottomTab";
-import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
+import MarketInfoModal from "../components/MarketModal/MarketInfoModal";
 
 
 const MapPage = () => {
@@ -33,7 +33,7 @@ const MapPage = () => {
       <BottomTab
         currentPath="map"
       />
-      <MarketInfoCard marketIndex={selectedMarket} />
+      <MarketInfoModal marketIndex={selectedMarket} />
     </PageWrapper>
   );
 };
