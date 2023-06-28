@@ -50,7 +50,7 @@ const MarketDataLoader = () => {
         .then((res) => {
           return res.data.response.body.items;
         })
-        .then(items => {  //시장 객체 담은 배열
+        .then(items => {  //items: 시장 객체 담은 배열
           //console.log(items);
         })
     } catch (error) {
@@ -61,7 +61,8 @@ const MarketDataLoader = () => {
   useEffect(() => {
     const [loadFirst, loadLater] = filterMarketsByDistance(location);
     loadFirst.forEach(marketName => loadData(generateApiUrl(marketName)));
-    //loadLater.forEach(marketName => loadData(generateApiUrl(marketName)));  //loadLater 불러오려니까 AxiosError 발생. 윗줄이랑 겹쳐서 그런가
+    //loadLater.forEach(marketName => loadData(generateApiUrl(marketName)));
+    //AxiosError 발생 (동시 요청 너무 많음) -> loadFirst 끝난 뒤에 loadLater 실행되도록 수정할 것
 
   }, [loadData]);
 
