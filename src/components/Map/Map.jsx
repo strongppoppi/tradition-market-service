@@ -19,10 +19,6 @@ const Map = () => {
     const mapOptions = {
       center: location,
       zoom: 16,
-      zoomControl: true,
-      zoomControlOptions: {
-        position: naver.maps.Position.TOP_LEFT,
-      },
     };
 
     //naverMap 생성 완료 -> 리렌더링하면서 MarketMarker에 인자로 전달
@@ -43,7 +39,6 @@ export default Map;
 // styled
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,5 +47,5 @@ const Wrapper = styled.div`
 
 const MapContainer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 100vh;
 `;

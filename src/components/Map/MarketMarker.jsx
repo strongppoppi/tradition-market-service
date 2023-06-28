@@ -3,12 +3,15 @@ import { styled } from "styled-components";
 import axios from "axios";
 import marketsLocation from "../../markets.json";
 
-const MarketMarker = ( {naverMap, markers, setMarkers} ) => {
+const MarketMarker = ( {naverMap, setMarkers} ) => {
+  const address = "서울특별시";
+  const encodedAddress = encodeURIComponent(address);
+
   const MARKET_KEY = process.env.REACT_APP_MARKET_ID;
   const MARKET_API_URL = `https://api.odcloud.kr/api/15052836/v1/uddi:2253111c-b6f3-45ad-9d66-924fd92dabd7?serviceKey=${MARKET_KEY}&page=1&perPage=1439&returnType=json`
-  const MARKET_STANDARD_API_URL = `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1521&type=json`;
+  const MARKET_STANDARD_API_URL = `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1500&type=json`;
   const { naver } = window;
- 
+  
   //geolocation - 현재 위도&경도 (예정)
   const location = [37.570690, 126.961031];
 

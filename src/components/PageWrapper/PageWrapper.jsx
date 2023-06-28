@@ -20,6 +20,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   margin: 0 auto;
   display: flex;
