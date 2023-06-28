@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { styled } from "styled-components";
 import marketsLocation from "../../markets.json";
 
@@ -21,7 +21,7 @@ const MarketMarker = ({ naverMap, markers, setMarkers, setSelectedMarket }) => {
         position: new naver.maps.LatLng(items[i].latitude, items[i].longitude),
         map: naverMap,
       });
-      //마커 클릭 시 MainPage의 selectedMarket에 선택된 시장의 key 저장
+      //마커 클릭 시 MainPage의 selectedMarket을 선택된 시장의 index로 변경
       naver.maps.Event.addListener(marker, 'click', getClickHandler(i));
       newMarkers.push(marker);
     }
