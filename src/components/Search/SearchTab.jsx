@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { FaSearchLocation } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
+
+import { useMyLocation } from "../../hooks/useMyLocation";
 
 const SearchTab = () => {
   return (
@@ -15,7 +17,9 @@ const SearchTab = () => {
         />
       </SearchContainer>
       <MyLocationContainer>
-        <ButtonContainer>
+        <ButtonContainer
+          onClick={useMyLocation}
+        >
           <FaLocationCrosshairs className="myLocationIcon" size={25} color="#212529" />
         </ButtonContainer>
       </MyLocationContainer>
@@ -56,13 +60,14 @@ const MyLocationContainer = styled.div`
   padding: 5px;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.button`
   width: 30px;
   height: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
 `;
 
 const SearchInput = styled.input`
