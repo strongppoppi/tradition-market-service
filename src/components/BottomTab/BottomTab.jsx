@@ -1,7 +1,12 @@
 import React from 'react';
 import { styled } from "styled-components";
 
-const BottomTab = () => {
+const BottomTab = ({currentPath}) => {
+
+  const handleButton = () => {
+    
+  };
+
   return (
     <Wrapper>
       <TabContainer>

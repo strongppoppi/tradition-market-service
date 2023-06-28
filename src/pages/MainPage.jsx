@@ -9,10 +9,10 @@ import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
 const MainPage = () => {
   return (
     <PageWrapper>
-      <Map />
       <SearchTab />
+      <Map />
       <BottomTab />
-      <MarketInfoCard />
+      {/* <MarketInfoCard /> */}
     </PageWrapper>
   );
 };

@@ -20,6 +20,11 @@ const Map = () => {
     const mapOptions = {
       center: location,
       zoom: 16,
+      logoControlOptions: { 
+        position: naver.maps.Position.BOTTOM_LEFT
+      },
+      mapDataControl: false,
+      scaleControl: false,
     };
 
     //naverMap 생성 완료 -> 리렌더링하면서 MarketMarker에 인자로 전달

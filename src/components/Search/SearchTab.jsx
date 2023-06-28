@@ -27,7 +27,6 @@ export default SearchTab;
 
 // styled
 const Wrapper = styled.div`
-  position: absolute;
   width: 100%;
   display: flex;
   flex-direction: row;
