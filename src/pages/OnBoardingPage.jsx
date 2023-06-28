@@ -9,7 +9,7 @@ const OnBoardingPage = () => {
       <OnBoarding />
       <LongButton
         text="알겠어요!"
-        navigationPath="/main"
+        navigationPath="/map"
       />
     </PageWrapper>
   );
