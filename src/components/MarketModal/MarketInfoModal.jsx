@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { styled } from "styled-components";
 import MarketDataLoader from "./MarketDataLoader";
 import MarketImageLoader from "./MarketImageLoader";
@@ -8,6 +9,7 @@ const MarketInfoModal = ({ marketIndex }) => {
     const [marketData, setMarketData] = useState(null);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [imageUrl, setImageUrl] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         setDataLoaded(false);
@@ -17,7 +19,7 @@ const MarketInfoModal = ({ marketIndex }) => {
     if (!marketIndex) return (<></>);   //markerIndex 값 없으면 invisible
 
     const handleClick = () => {
-
+        navigate(`/market/${marketIndex}`, { state: { data: marketData } });
     };
 
     return (
