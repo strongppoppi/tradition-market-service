@@ -74,4 +74,6 @@ const ImageContainer = styled.div`
 const MarketImage = styled.img`
     width: 100px;
     height: 100px;
+    object-fit: cover;
+    object-position: 50% 50%;
 `;
