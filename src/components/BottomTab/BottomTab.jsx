@@ -5,24 +5,24 @@ import { useNavigate } from "react-router";
 const BottomTab = ({currentPath}) => {
   const navigate = useNavigate();
 
-  const handleButton = ({path}) => {
+  const handleButton = (path) => {
     navigate(path);
   };
 
   return (
     <Wrapper>
       <TabContainer
-        onClick={handleButton("/home")}
+        onClick={() => handleButton("/home")}
       >
         <TabButton></TabButton>
       </TabContainer>
       <TabContainer
-        onClick={handleButton("/map")}
+        onClick={() => handleButton("/map")}
       >
         <TabButton></TabButton>
       </TabContainer>
       <TabContainer
-        onClick={handleButton("/mypage")}
+        onClick={() => handleButton("/mypage")}
       >
         <TabButton></TabButton>
       </TabContainer>
