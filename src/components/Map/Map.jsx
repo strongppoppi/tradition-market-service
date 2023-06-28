@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, } from 'react';
 import { styled } from "styled-components"
 import MarketMarker from "./MarketMarker";
-import MarketDataLoader from '../MarketInfo/MarketDataLoader';
+import MarketDataLoader from '../MarketModal/MarketDataLoader';
 
 const Map = ({ naverMap, setNaverMap, markers, setMarkers, setSelectedMarket }) => {
   const mapElement = useRef(null);
@@ -18,7 +18,7 @@ const Map = ({ naverMap, setNaverMap, markers, setMarkers, setSelectedMarket }) 
     const mapOptions = {
       center: location,
       zoom: 16,
-      logoControlOptions: { 
+      logoControlOptions: {
         position: naver.maps.Position.BOTTOM_LEFT
       },
       mapDataControl: false,
