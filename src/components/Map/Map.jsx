@@ -40,6 +40,7 @@ export default Map;
 // styled
 const Wrapper = styled.div`
   width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,5 +49,5 @@ const Wrapper = styled.div`
 
 const MapContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  flex: 1;
 `;

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PageWrapper from "../components/PageWrapper/PageWrapper";
 import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
+import BottomTab from "../components/BottomTab/BottomTab";
 import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
 import MarketDataLoader from "../components/MarketInfo/MarketDataLoader";
 
@@ -16,6 +17,7 @@ const MainPage = () => {
     <PageWrapper>
       <Map setSelectedMarket={setSelectedMarket} />
       <SearchTab />
+      <BottomTab />
       <MarketInfoCard market={selectedMarket} marketData={marketData} />
       {/* <MarketDataLoader marketData={marketData} setMarketData={setMarketData} /> */}
     </PageWrapper>
