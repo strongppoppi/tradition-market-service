@@ -5,7 +5,7 @@ import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
 import BottomTab from "../components/BottomTab/BottomTab";
 import MarketInfoCard from "../components/MarketInfo/MarketInfoCard";
-import MarketDataLoader from "../components/MarketInfo/MarketDataLoader";
+
 
 const MapPage = () => {
   const [naverMap, setNaverMap] = useState(null);   //네이버 지도 instance(?)
@@ -28,7 +28,7 @@ const MapPage = () => {
       <BottomTab
         currentPath="map"
       />
-      <MarketInfoCard market={selectedMarket} marketData={marketData} />
+      <MarketInfoCard marketIndex={selectedMarket} />
     </PageWrapper>
   );
 };

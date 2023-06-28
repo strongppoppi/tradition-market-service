@@ -14,46 +14,26 @@ import marketsLocation from "../../markets.json";
 => 일단 markets.json에 key 추가할 것
 */
 
-const MarketDataLoader = ({ marketData, setMarketData }) => {
+const MarketDataLoader = ({ marketIndex, setMarketData, setIsLoaded }) => {
   const MARKET_KEY = process.env.REACT_APP_MARKET_ID;
   const MARKET_API_URL = `https://api.odcloud.kr/api/15052836/v1/uddi:2253111c-b6f3-45ad-9d66-924fd92dabd7?serviceKey=${MARKET_KEY}&page=1&perPage=1439&returnType=json`;
   const MARKET_STANDARD_API_URL = `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1521&type=json`;
-  const generateApiUrl = (marketName) => `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1521&mrktNm=${marketName}&type=json`;
 
-  //geolocation - 현재 위도&경도 (예정)
-  const location = [37.570690, 126.961031];
+  const generateApiUrl = (marketIndex) => `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=${marketIndex + 1}&numOfRows=1&type=json`;
 
-  //myLocation: 사용자 현재 위치 (geolocation)
-  //사용자 현재 위치 기준으로 0.1 이내 marketName -> loadFirst / 나머지 -> loadLater
-  const filterMarketsByDistance = (myLocation) => {
-    var loadFirst = [];
-    var loadLater = [];
-    marketsLocation.forEach(market => {
-      var distance = getDistance(myLocation, [Number(market.latitude), Number(market.longitude)]);
-      if (distance < 0.1) loadFirst.push(market.mrktNm);
-      else loadLater.push(market.mrktNm);
-    })
-    return [loadFirst, loadLater];
-  };
 
-  //두 지점의 위도&경도([lat1, lon1], [lat2, lon2]) 받아서 거리 계산해주는 함수 
-  const getDistance = (location1, location2) => {
-    var lat = location1[0] - location2[0];
-    var lon = location1[1] - location2[1];
-    return Math.sqrt(lat * lat + lon * lon);
-  };
 
   const loadData = async (apiUrl) => {
     try {
       await axios
         .get(apiUrl)
         .then((res) => {
-          return res.data.response.body.items;
+          return res.data.response.body.items[0];
         })
-        .then(items => {  //items: 시장 객체 담은 배열
-          const newMarketData = [...marketData];
-          newMarketData.push(items);
-          setMarketData(newMarketData);
+        .then(item => {  //item: 시장 객체
+          console.log(item);
+          setMarketData(item);
+          setIsLoaded(true);
         })
     } catch (error) {
       console.log(error);
@@ -61,16 +41,12 @@ const MarketDataLoader = ({ marketData, setMarketData }) => {
   };
 
   useEffect(() => {
-    const [loadFirst, loadLater] = filterMarketsByDistance(location);
-    loadFirst.forEach(marketName => loadData(generateApiUrl(marketName)));
-    //loadLater.forEach(marketName => loadData(generateApiUrl(marketName)));
-    //AxiosError 발생 (동시 요청 너무 많음) -> loadFirst 끝난 뒤에 loadLater 실행되도록 수정할 것
-
+    loadData(generateApiUrl(marketIndex));
   }, [loadData]);
 
   return (
     <>
-      <p>MarketDataLoader</p>
+      <p>Loading Market Information...</p>
     </>
   )
 };
