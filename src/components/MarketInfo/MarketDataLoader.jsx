@@ -21,8 +21,6 @@ const MarketDataLoader = ({ marketIndex, setMarketData, setIsLoaded }) => {
 
   const generateApiUrl = (marketIndex) => `http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=${marketIndex + 1}&numOfRows=1&type=json`;
 
-
-
   const loadData = async (apiUrl) => {
     try {
       await axios

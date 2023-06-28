@@ -37,11 +37,8 @@ const MarketMarker = ({ naverMap, markers, setMarkers, setSelectedMarket }) => {
 
   return (
     <>
-      <p>res</p>
     </>
   );
 };
 
 export default MarketMarker;
-
-// styled

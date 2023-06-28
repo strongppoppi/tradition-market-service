@@ -16,18 +16,19 @@ const MapPage = () => {
 
   return (
     <PageWrapper>
+      <Map
+        naverMap={naverMap}
+        markers={markers}
+        setMarkers={setMarkers}
+        setNaverMap={setNaverMap}
+        setSelectedMarket={setSelectedMarket}
+      />
       <SearchTab
         naverMap={naverMap}
         markers={markers}
         setMarkers={setMarkers}
         myCurrentLocation={myCurrentLocation}
         setMyCurrentLocation={setMyCurrentLocation}
-      />
-      <Map
-        naverMap={naverMap}
-        markers={markers}
-        setMarkers={setMarkers}
-        setNaverMap={setNaverMap}
         setSelectedMarket={setSelectedMarket}
       />
       <BottomTab
