@@ -4,21 +4,24 @@ import MarketDataLoader from "./MarketDataLoader";
 import MarketImageLoader from "./MarketImageLoader";
 
 
-const MarketInfoCard = ({ marketIndex }) => {
+const MarketInfoModal = ({ marketIndex }) => {
     const [marketData, setMarketData] = useState(null);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [imageUrl, setImageUrl] = useState("");
-
 
     useEffect(() => {
         setDataLoaded(false);
         setImageUrl("");
     }, [marketIndex]);
 
-    if (!marketIndex) return (<></>);
+    if (!marketIndex) return (<></>);   //markerIndex 값 없으면 invisible
+
+    const handleClick = () => {
+
+    };
 
     return (
-        <Wrapper>
+        <Wrapper onClick={handleClick}>
             {dataLoaded ?
                 <>
                     <InfoContainer>
@@ -27,17 +30,16 @@ const MarketInfoCard = ({ marketIndex }) => {
                         <StoreNumber>{marketData.storNumber}</StoreNumber>
                     </InfoContainer>
                     <ImageContainer>
-                        {imageUrl != "" ? <MarketImage src={imageUrl} alt={marketData.mrktNm + " 대표사진"} /> : null}
+                        {imageUrl != "" && <MarketImage src={imageUrl} alt={marketData.mrktNm + " 대표사진"} />}
                         <MarketImageLoader marketIndex={marketIndex} setImageUrl={setImageUrl} />
                     </ImageContainer>
                 </> :
                 <MarketDataLoader marketIndex={marketIndex} setMarketData={setMarketData} setDataLoaded={setDataLoaded} />}
         </Wrapper>
-
     );
 }
 
-export default MarketInfoCard;
+export default MarketInfoModal;
 
 //styled
 const Wrapper = styled.div`
@@ -70,10 +72,11 @@ const MarketAddress = styled.p`
 const ImageContainer = styled.div`
     width: 100px;
     height: 100px;
-    background-color: lightgrey;
 `;
 
 const MarketImage = styled.img`
     width: 100px;
     height: 100px;
+    object-fit: cover;
+    object-position: 50% 50%;
 `;
