@@ -14,7 +14,6 @@ const MarketInfoCard = ({ marketIndex }) => {
 
     if (!marketIndex) return (<></>);
 
-
     return (
         <Wrapper>
             {isLoaded ?
