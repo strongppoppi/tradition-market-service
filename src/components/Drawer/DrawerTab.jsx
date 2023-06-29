@@ -28,5 +28,6 @@ const ActiveTab = styled.div`
 const InactiveTab = styled.div`
     text-align: center;
     color: grey;
+    border-bottom: solid 1px white;
     padding: 5px;
 `;

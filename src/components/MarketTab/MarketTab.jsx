@@ -1,13 +1,16 @@
 import { styled } from "styled-components";
+import MarketRanking from "./Ranking/MarketRanking";
+import MarketInfo from "./MarketInfo";
 
 
-const MarketTab = ({ marketIndex, storeNumber }) => {
-    //react-bottom-drawer 라이브러리 사용 예정
+const MarketTab = ({ marketIndex }) => {
 
 
     return (
-        <>
-        </>
+        <Wrapper>
+            <MarketInfo />
+            <MarketRanking />
+        </Wrapper>
     );
 }
 
@@ -16,4 +19,5 @@ export default MarketTab;
 //styled
 const Wrapper = styled.div`
     width: 100%;
+    flex: 1;    
 `;

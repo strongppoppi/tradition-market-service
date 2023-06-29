@@ -7,9 +7,9 @@ const StoreTab = ({ marketIndex, storeNumber }) => {
 
 
     return (
-        <>
+        <Wrapper>
             <StoreList marketIndex={marketIndex} storeNumber={storeNumber} />
-        </>
+        </Wrapper>
     );
 }
 
