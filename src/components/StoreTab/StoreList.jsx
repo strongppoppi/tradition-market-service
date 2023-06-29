@@ -6,10 +6,14 @@ import StoreCard from "./StoreCard";
 
 const StoreList = ({ marketIndex, storeNumber }) => {
     const [storeItems, setStoreItems] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
     const itemsPerLoad = 10;
 
     const loadFunc = () => {
-        if (storeItems.length >= storeNumber) return;
+        if (storeItems.length >= storeNumber) {
+            setHasMore(false);
+            return;
+        };
         const newStoreItems = [...storeItems];
         for (let i = storeItems.length; i < Math.min(storeItems.length + itemsPerLoad, storeNumber); i++) {
             newStoreItems.push(<StoreCard marketIndex={marketIndex} storeIndex={i} key={i} />);
@@ -22,7 +26,7 @@ const StoreList = ({ marketIndex, storeNumber }) => {
             <InfiniteScroll
                 pageStart={0}
                 loadMore={loadFunc}
-                hasMore={true}
+                hasMore={hasMore}
                 loader={<div key={0} />}
                 useWindow={false}
             >
