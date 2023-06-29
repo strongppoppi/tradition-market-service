@@ -23,7 +23,7 @@ const StoreList = ({ marketIndex, storeNumber }) => {
                 pageStart={0}
                 loadMore={loadFunc}
                 hasMore={true}
-                loader={<div>Loading ...</div>}
+                loader={<div key={0} />}
                 useWindow={false}
             >
                 {storeItems}
