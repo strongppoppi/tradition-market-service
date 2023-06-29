@@ -15,7 +15,7 @@ const MarketImageLoader = ({ marketIndex, setImageUrl }) => {
         })
         .then((list) => {
             if (list.length == 0) {
-                setImageUrl("logo512.png"); //파베에 시장 이미지 없으면 default 이미지 삽입 (경로 수정 필요)
+                setImageUrl("https://jkfenner.com/wp-content/uploads/2019/11/default.jpg"); //파베에 시장 이미지 없으면 default 이미지 삽입 (경로 수정 필요)
             } else {
                 const itemRef = list[0];
                 getDownloadURL(itemRef)
