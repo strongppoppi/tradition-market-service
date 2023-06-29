@@ -40,6 +40,6 @@ export default StoreList;
 
 //styled
 const Wrapper = styled.div`
-    height: 700px;
+    height: 100%;
     overflow: auto;
 `;
