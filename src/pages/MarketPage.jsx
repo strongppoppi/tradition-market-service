@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useLocation } from 'react-router-dom';
 import PageWrapper from "../components/PageWrapper/PageWrapper";
 import Header from "../components/Header/Header";
-import MarketMap from "../components/MarketTab/MarketMap";
+import MarketMap from "../components/MarketMap/MarketMap";
 
 
 const MarketPage = () => {
