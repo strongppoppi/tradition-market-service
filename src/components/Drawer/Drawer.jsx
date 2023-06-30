@@ -6,6 +6,7 @@ const Drawer = ({ content }) => {
     const [isDragging, setIsDragging] = useState(false);
     const dragRef = useRef(null);
     const startDragY = useRef(0);
+    const windowHeight = window.innerHeight
 
 
     const handleMouseDown = (event) => {
@@ -22,8 +23,31 @@ const Drawer = ({ content }) => {
     };
 
     const handleMouseUp = () => {
+        if (isDragging) {
+            if (visibleHeight > windowHeight / 2) {
+                changeHeight(windowHeight);
+            } else {
+                changeHeight(70);
+            }
+        }
         setIsDragging(false);
     };
+
+    const changeHeight = (height) => {
+        // 애니메이션 효과를 추가하기 위해 transition 속성 추가
+        dragRef.current.style.transition = "height 0.3s ease";
+
+        const intervalId = setInterval(() => {
+            setVisibleHeight(height);
+        }, 20);
+
+        setTimeout(() => {
+            clearInterval(intervalId);
+            // 애니메이션 종료 후에 다시 transition 속성 추가
+            dragRef.current.style.transition = "";
+        }, 300);
+    }
+
 
     return (
         <Wrapper ref={dragRef} style={{ height: `${visibleHeight}px` }}>
