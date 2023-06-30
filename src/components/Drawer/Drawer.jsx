@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import { styled } from 'styled-components';
 
 const Drawer = ({ content }) => {
-    const [visibleHeight, setVisibleHeight] = useState(100);
+    const [visibleHeight, setVisibleHeight] = useState(70);
     const [isDragging, setIsDragging] = useState(false);
     const dragRef = useRef(null);
     const startDragY = useRef(0);
-    const windowHeight = window.innerHeight
+    const windowHeight = window.innerHeight;
 
 
     const handleMouseDown = (event) => {
@@ -93,6 +93,7 @@ const HandleContainer = styled.div`
 const Handle = styled.div`
   width: 40%;
   height: 5px;
+  margin: 10px;
   border-radius: 5px;
   background-color: grey;
   cursor: grab;
