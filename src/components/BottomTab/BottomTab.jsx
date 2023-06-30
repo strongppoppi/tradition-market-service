@@ -114,6 +114,7 @@ export default BottomTab;
 
 // styled
 const Wrapper = styled.div`
+  position: absolute;
   bottom: 0;
   width: 100%;
   display: flex;

@@ -6,6 +6,8 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 import marketsLocation from "../../markets.json";
 import { useMyLocationStore } from "../../store/store";
 
+import { useMyLocation } from '../../hooks/useMyLocation';
+
 import SearchList from "./SearchList";
 
 const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurrentLocation, setSelectedMarket}) => {
@@ -50,41 +52,27 @@ const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurre
     }
   }, [myCurrentLocation]);
 
-  // 나의 현 위치 가져오기
-  const fetchMyLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setMyCurrentLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
-      });
-    } else {
-      window.alert("현재위치를 알수 없습니다.");
-    }
-  };
-
   return (
     <Wrapper>
       <TabContainer>
         <SearchContainer>
           <ButtonContainer>
-            <FaSearchLocation className="searchIcon" size={25} color="#212529" />
+            <SearchIcon src={require("../../assets/icons/searchIcon.png")} />
           </ButtonContainer>
           <SearchInput
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="어떤 시장에 갈까요?"
+            placeholder="시장명·지역으로 검색"
           />
         </SearchContainer>
-        <MyLocationContainer>
+        {/* <MyLocationContainer>
           <ButtonContainer
-            onClick={fetchMyLocation}
+            onClick={useMyLocation}
           >
             <FaLocationCrosshairs className="myLocationIcon" size={25} color="#212529" />
           </ButtonContainer>
-        </MyLocationContainer>
+        </MyLocationContainer> */}
       </TabContainer>
       { isListOpened && 
         <SearchList 
@@ -107,6 +95,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 10px 15px;
 `;
 
 const TabContainer = styled.div`
@@ -116,6 +105,8 @@ const TabContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px 0px rgba(17, 18, 19, 0.29);
 `;
 
 const SearchContainer = styled.div`
@@ -124,9 +115,8 @@ const SearchContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 10px 12px;
   gap: 5px;
-  border: 1px solid #212529;
 `;
 
 const MyLocationContainer = styled.div`
@@ -140,8 +130,8 @@ const MyLocationContainer = styled.div`
 `;
 
 const ButtonContainer = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -151,8 +141,19 @@ const ButtonContainer = styled.button`
 
 const SearchInput = styled.input`
   flex: 1;
-  height: 30px;
-  padding: 0 10px;
+  height: 24px;
   outline: none;
   border: none;
+  color: #A6ADBC;
+  font-size: 0.9375rem;
+
+  &::placeholder{
+    color: #A6ADBC;
+  }
+`;
+
+const SearchIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
 `;
