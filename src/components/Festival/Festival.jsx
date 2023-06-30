@@ -6,18 +6,22 @@ import Carousel from "react-multi-carousel";
 
 const Festival = () => {
   const FESTIVAL_KEY = process.env.REACT_APP_FESTIVAL_ID;
-  const FESTIVAL_API_URL = `//openapi.seoul.go.kr:8088/${FESTIVAL_KEY}/json/culturalEventInfo/1/15/축제-문화/예술/`;
+  const FESTIVAL_API_URL = `https://proxy.cors.sh/http://openapi.seoul.go.kr:8088/${FESTIVAL_KEY}/json/culturalEventInfo/1/15/축제-문화/예술/`;
   const [festivalData, setFestivalData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState();
 
   const handleChange = (index) => {
     setCurrentIndex(index);
-  }
-  
+  };
+
   const loadData = async () => {
     try {
       await axios
-        .get(FESTIVAL_API_URL)
+        .get(FESTIVAL_API_URL, {
+          headers: {
+            'x-cors-api-key': 'temp_8897981b5a3c25edbe0d8d042cf0b42d'
+          }
+        })
         .then((res) => {
           const data = res.data.culturalEventInfo.row;
           setFestivalData(data);
