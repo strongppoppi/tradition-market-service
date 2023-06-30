@@ -46,7 +46,7 @@ const Festival = () => {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1 
+      partialVisibilityGutter: 100
     }
   };
 
@@ -58,6 +58,7 @@ const Festival = () => {
           autoPlay={true}
           autoPlaySpeed={1000}
           infinite={true}
+          partialVisbile={true}
         >
           {festivalData.map((fest) => (
             <ContentContainer key={fest.TITLE}>
@@ -77,6 +78,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const ContentContainer = styled.div`
