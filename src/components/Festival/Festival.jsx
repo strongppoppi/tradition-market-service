@@ -35,18 +35,16 @@ const Festival = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3 
+      items: 8,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 2
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      partialVisibilityGutter: 100
+      partialVisibilityGutter: 140
     }
   };
 
@@ -55,14 +53,19 @@ const Festival = () => {
       {festivalData.length > 0 && (
         <Carousel
           responsive={responsive}
+          draggable={true}
+          swipeable={true}
           autoPlay={true}
           autoPlaySpeed={1000}
           infinite={true}
           partialVisbile={true}
+          arrows={false}
         >
           {festivalData.map((fest) => (
-            <ContentContainer key={fest.TITLE}>
-              <Image src={fest.MAIN_IMG} />
+            <ContentContainer key={fest.TITLE} bgUrl={fest.MAIN_IMG}>
+              <FestivalTitle>
+                {fest.TITLE}
+              </FestivalTitle>
             </ContentContainer>
           ))}
         </Carousel>
@@ -82,17 +85,23 @@ const Wrapper = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  position: relative;
-  width: 100%;
+  margin-left: 20px;
+  width: 225px;
+  height: 225px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: left;
+  padding: 10px 15px;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url(${(props) => props.bgUrl});
+  background-size: cover;
+  border-radius: 8px;
 `;
 
-const Image = styled.img`
-  width: 270px;
-  height: 270px;
-  object-fit: cover;
-  border-radius: 40px;
+const FestivalTitle = styled.h2`
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.34px;
+  word-break: keep-all;
 `;
