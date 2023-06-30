@@ -20,6 +20,12 @@ const MarketMarker = ({ naverMap, markers, setMarkers, setSelectedMarket }) => {
       var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(items[i].latitude, items[i].longitude),
         map: naverMap,
+        icon: {
+          url: 'marker.png',
+          size: new naver.maps.Size(50, 52),
+          origin: new naver.maps.Point(0, 0),
+          anchor: new naver.maps.Point(25, 26)
+        }
       });
       //마커 클릭 시 MainPage의 selectedMarket을 선택된 시장의 index로 변경
       naver.maps.Event.addListener(marker, 'click', getClickHandler(i));
