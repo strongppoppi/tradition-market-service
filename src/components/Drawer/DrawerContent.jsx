@@ -48,9 +48,5 @@ const TabContainer = styled.div`
 const Container = styled.div`
     padding: 5% 5%;
     flex-grow: 1;
-    overflow: auto;
-    ::-webkit-scrollbar {
-    width: 0;
-    background-color: transparent;
   }
 `;

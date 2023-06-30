@@ -22,7 +22,7 @@ const MarketMarker = ({ naverMap, markers, setMarkers, setSelectedMarket }) => {
         map: naverMap,
         icon: {
           url: 'marker.png',
-          size: new naver.maps.Size(50, 52),
+          size: new naver.maps.Size(42, 52),
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(25, 26)
         }
