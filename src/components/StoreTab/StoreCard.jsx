@@ -31,12 +31,12 @@ const StoreCard = ({ marketIndex, storeIndex }) => {
         <>
             <Wrapper onClick={handleClick}>
                 <div>{marketIndex}번 시장 - {storeIndex}번 점포</div>
-                {imagesUrl.map((url, index) => {
+                {imagesUrl.map((url, index) =>
                     <ImageContainer key={index}>
                         <Image src={url} alt="store image" />
                         <StoreImageLoader marketIndex={marketIndex} storeIndex={storeIndex} setImagesUrl={setImagesUrl} />
                     </ImageContainer>
-                })}
+                )}
                 {dataLoaded ? <>
                     <StoreName>{displayData("점포명")}</StoreName>
                     <StoreItem>{displayData("판매상품")}</StoreItem>
