@@ -7,10 +7,6 @@ const SplashPage = () => {
   return (
     <PageWrapper>
       <SplashBody />
-      <LongButton
-        text="시장 가장!"
-        navigationPath="/onBoarding"
-      />
     </PageWrapper>
   );
 };
