@@ -7,9 +7,8 @@ const Drawer = ({ content }) => {
     const dragRef = useRef(null);
     const startDragY = useRef(0);
 
-    //
+
     const handleMouseDown = (event) => {
-        console.log("onMouseDown");
         setIsDragging(true);
         startDragY.current = event.clientY;
     };
@@ -23,7 +22,6 @@ const Drawer = ({ content }) => {
     };
 
     const handleMouseUp = () => {
-        console.log("onMouseUp");
         setIsDragging(false);
     };
 
@@ -40,7 +38,6 @@ const Drawer = ({ content }) => {
             >
                 <Handle />
             </HandleContainer>
-
             {content}
         </Wrapper>
     );
