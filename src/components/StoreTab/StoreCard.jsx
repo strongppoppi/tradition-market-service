@@ -12,9 +12,15 @@ const StoreCard = ({ marketIndex, storeIndex }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [dataLoaded, setDataLoaded] = useState(false);
 
+    //데이터 존재하지 않으면 대체 텍스트 표시
     const displayData = (property) => {
         if (storeData.hasOwnProperty(property)) return storeData[property];
         else return "no data";
+    }
+
+    //태그 표시 여부
+    const displayTag = (property) => {
+        return storeData.hasOwnProperty(property) && storeData[property] == 1;
     }
 
     //클릭 시 점포 탭으로 이동
@@ -40,15 +46,10 @@ const StoreCard = ({ marketIndex, storeIndex }) => {
         }
     };
 
-    // //image 오류 확인용
-    // useEffect(() => {
-    //     console.log(storeIndex, imagesUrl.length, "(StoreCard)");
-    // }, [imagesUrl]);
 
     return (
         <>
             <Wrapper onClick={handleClick}>
-                <p>{marketIndex}번 시장 - {storeIndex}번 점포</p>
                 {imageLoaded ?
                     <Carousel
                         swipeable={true}
@@ -57,25 +58,24 @@ const StoreCard = ({ marketIndex, storeIndex }) => {
                         partialVisible={false}
                         responsive={responsive}
                         autoPlay={false}
-                        infinite={false}
-                        partialVisbile={true}>
+                        infinite={false}>
                         {imagesUrl.map((url, index) =>
                             <ImageContainer key={index}>
                                 <Image src={url} alt="store image" />
                             </ImageContainer>)}
                     </Carousel> :
                     <StoreImageLoader marketIndex={marketIndex} storeIndex={storeIndex} setImagesUrl={setImagesUrl} setImageLoaded={setImageLoaded} />}
-                {/* {imageLoaded ?
-                    imagesUrl.map((url, index) =>
-                        <ImageContainer key={index}>
-                            <Image src={url} alt="store image" />
-                        </ImageContainer>) :
-                    <StoreImageLoader marketIndex={marketIndex} storeIndex={storeIndex} setImagesUrl={setImagesUrl} setImageLoaded={setImageLoaded} />} */}
-                {dataLoaded ? <>
-                    <StoreName>{displayData("점포명")}</StoreName>
-                    <StoreItem>{displayData("판매상품")}</StoreItem>
-                    <StoreDescription>{displayData("연락처")}</StoreDescription>
-                </> :
+                {dataLoaded ?
+                    <DataContainer>
+                        <StoreName>{displayData("점포명")}</StoreName>
+                        <StoreItem>{displayData("판매상품")}</StoreItem>
+                        <StoreDescription>{displayData("연락처")}</StoreDescription>
+                        <TagContainer>
+                            {displayTag("카드가맹유무") && <Tag>카드사용가능</Tag>}
+                            {displayTag("제로페이가맹") && <Tag>제로페이</Tag>}
+                            {displayTag("온누리") && <Tag>온누리상품권</Tag>}
+                        </TagContainer>
+                    </DataContainer> :
                     <StoreDataLoader marketIndex={marketIndex} storeIndex={storeIndex} setStoreData={setStoreData} setDataLoaded={setDataLoaded} />}
             </Wrapper>
         </>
@@ -87,30 +87,52 @@ export default StoreCard;
 //styled
 const Wrapper = styled.div`
     width: 100%;
-    height: 200px;
-    background-color: lightgrey;
+    height: 300px;
+    background-color: inherit;
     margin-bottom: 20px;
+
+    box-sizing: border-box;
+    border: solid 1px black;
 `;
 
 const ImageContainer = styled.div`
     width: 100%;
-    height: 100px;
+    height: 169px;
     background-color: grey;
 `;
 
 const Image = styled.img`
     width: 100%;
-    height: 100px;
-    object-fit: contain;
+    height: 169px;
+    object-fit: cover;
     object-position: 50% 50%;
 `;
 
-const StoreName = styled.p``;
+const DataContainer = styled.div`
+    padding: 5px;
+`;
 
-const StoreItem = styled.p``;
+const StoreName = styled.p`
+    font-size: 20px;
+    font-weight: 700;
+`;
+
+const StoreItem = styled.p`
+    font-size: 12px;
+    color: #565656;
+`;
 
 const StoreDescription = styled.p``;
 
-const TagContainer = styled.div``;
+const TagContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
 
-const Tag = styled.div``;
+const Tag = styled.div`
+    display: inline-box;
+    border: solid 1px #000000;
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+`;

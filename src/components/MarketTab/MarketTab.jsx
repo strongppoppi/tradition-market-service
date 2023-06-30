@@ -20,5 +20,8 @@ export default MarketTab;
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;
-    overflow: auto;  
+    overflow: auto;
+    ::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
 `;
