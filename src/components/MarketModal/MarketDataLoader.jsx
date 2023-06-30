@@ -7,12 +7,16 @@ const MarketDataLoader = ({ marketIndex, setMarketData, setDataLoaded }) => {
   const MARKET_API_URL = `//api.odcloud.kr/api/15052836/v1/uddi:2253111c-b6f3-45ad-9d66-924fd92dabd7?serviceKey=${MARKET_KEY}&page=1&perPage=1439&returnType=json`;
   const MARKET_STANDARD_API_URL = `//api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=1&numOfRows=1521&type=json`;
 
-  const generateApiUrl = (marketIndex) => `//api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=${marketIndex + 1}&numOfRows=1&type=json`;
+  const generateApiUrl = (marketIndex) => `https://proxy.cors.sh/http://api.data.go.kr/openapi/tn_pubr_public_trdit_mrkt_api?serviceKey=${MARKET_KEY}&pageNo=${marketIndex + 1}&numOfRows=1&type=json`;
 
   const loadData = async (apiUrl) => {
     try {
       await axios
-        .get(apiUrl)
+        .get(apiUrl, {
+          headers: {
+            'x-cors-api-key': 'temp_8897981b5a3c25edbe0d8d042cf0b42d'
+          }
+        })
         .then((res) => {
           return res.data.response.body.items[0];
         })
