@@ -31,14 +31,14 @@ export default DrawerContent;
 //styled
 const Wrapper = styled.div`
     width: 100%;
-    height: 50%;
+    height: calc(100% - 25px);
     display: flex;
     flex-direction: column;
 `;
 
 const TabContainer = styled.div`
     width: 100%;
-    height: 70px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -46,8 +46,8 @@ const TabContainer = styled.div`
 `;
 
 const Container = styled.div`
-    padding: 5% 10%;
-    flex: 1;
+    padding: 5% 5%;
+    flex-grow: 1;
     overflow: auto;
     ::-webkit-scrollbar {
     width: 0;

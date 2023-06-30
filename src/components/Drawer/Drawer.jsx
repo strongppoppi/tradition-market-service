@@ -55,7 +55,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
 `;
 
 const HandleContainer = styled.div`
@@ -63,6 +62,7 @@ const HandleContainer = styled.div`
     height: 25px;
     display: flex;
     justify-content: center;
+    align-items: center;
     cursor: grab;
 `;
 
@@ -70,7 +70,6 @@ const Handle = styled.div`
   width: 40%;
   height: 5px;
   border-radius: 5px;
-  margin: 10px;
   background-color: grey;
   cursor: grab;
 `;
