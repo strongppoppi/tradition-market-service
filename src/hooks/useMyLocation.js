@@ -2,10 +2,10 @@
   export const useMyLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setMyCurrentLocation({
+        let myLocation = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-        });
+        };
       });
     } else {
       window.alert("현재위치를 알수 없습니다.");
