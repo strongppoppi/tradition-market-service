@@ -15,7 +15,7 @@ const NearMarketButton = ({ naverMap, markers, myCurrentLocation }) => {
 
   // 함수: 가장 가까운 마커 찾기
   const findNearestMarker = (markers, currentLatitude, currentLongitude) => {
-    var nearestMarker = null;
+    var nearestMarker = markers[0];
     var minDistance = Number.MAX_VALUE;
 
     for (var i = 0; i < markers.length; i++) {
