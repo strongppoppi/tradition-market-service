@@ -4,6 +4,7 @@ import PageWrapper from "../components/PageWrapper/PageWrapper";
 import Header from "../components/Header/Header";
 import MarketMap from "../components/MarketMap/MarketMap";
 import DrawerContent from "../components/Drawer/DrawerContent";
+import Drawer from "../components/Drawer/Drawer";
 
 
 const MarketPage = () => {
@@ -15,10 +16,7 @@ const MarketPage = () => {
         <PageWrapper>
             <Header title={marketApiData.mrktNm} />
             <MarketMap marketIndex={marketIndex} />
-            {/* <Drawer>
-                <DrawerContent marketIndex={marketIndex} storeNumber={marketApiData.storNumber}/>
-            </Drawer> */}
-            <DrawerContent marketIndex={marketIndex} storeNumber={marketApiData.storNumber} />
+            <Drawer content={<DrawerContent marketIndex={marketIndex} storeNumber={marketApiData.storNumber} />} />
         </PageWrapper>
     );
 };
