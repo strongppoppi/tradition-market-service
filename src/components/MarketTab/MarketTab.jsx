@@ -19,5 +19,6 @@ export default MarketTab;
 //styled
 const Wrapper = styled.div`
     width: 100%;
-    flex: 1;    
+    height: 100%;
+    overflow: auto;  
 `;

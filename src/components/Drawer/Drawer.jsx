@@ -7,9 +7,8 @@ const Drawer = ({ content }) => {
     const dragRef = useRef(null);
     const startDragY = useRef(0);
 
-    //
+
     const handleMouseDown = (event) => {
-        console.log("onMouseDown");
         setIsDragging(true);
         startDragY.current = event.clientY;
     };
@@ -23,7 +22,6 @@ const Drawer = ({ content }) => {
     };
 
     const handleMouseUp = () => {
-        console.log("onMouseUp");
         setIsDragging(false);
     };
 
@@ -40,7 +38,6 @@ const Drawer = ({ content }) => {
             >
                 <Handle />
             </HandleContainer>
-
             {content}
         </Wrapper>
     );
@@ -58,7 +55,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
 `;
 
 const HandleContainer = styled.div`
@@ -66,6 +62,7 @@ const HandleContainer = styled.div`
     height: 25px;
     display: flex;
     justify-content: center;
+    align-items: center;
     cursor: grab;
 `;
 
@@ -73,7 +70,6 @@ const Handle = styled.div`
   width: 40%;
   height: 5px;
   border-radius: 5px;
-  margin: 10px;
   background-color: grey;
   cursor: grab;
 `;
