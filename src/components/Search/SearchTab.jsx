@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
-import { FaSearchLocation } from "react-icons/fa";
-import { FaLocationCrosshairs } from "react-icons/fa6";
 
 import marketsLocation from "../../markets.json";
-import { useMyLocationStore } from "../../store/store";
-
-import { useMyLocation } from '../../hooks/useMyLocation';
-
 import SearchList from "./SearchList";
 
-const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurrentLocation, setSelectedMarket}) => {
-  const { naver } = window; // 네이버 지도
-  const { addMyLocation } = useMyLocationStore(); // 전역 상태에 내 위치 저장
+const SearchTab = ({naverMap, setSelectedMarket}) => {
   const [searchTerm, setSearchTerm] = useState(""); // 검색값 변화 감지
   const [searchedData, setSearchedData] = useState([]); // 검색 결과 목록
   const [isListOpened, setIsListOpened] = useState(false); // 검색 목록 렌더링 여부
@@ -35,22 +27,7 @@ const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurre
     setSearchedData(data);
   };
 
-  // 나의 현 위치로 지도 이동 및 마커 표시
-  useEffect(() => {
-    if (naverMap) {
-      console.log("useState: ", myCurrentLocation);
-      addMyLocation(myCurrentLocation);
-      var newCenter = new naver.maps.LatLng(myCurrentLocation.latitude, myCurrentLocation.longitude);
-      var newMarkers = [...markers];
-      var newMyLocationMarker = new naver.maps.Marker({
-        position: newCenter,
-        map: naverMap,
-      });
-      newMarkers.push(newMyLocationMarker);
-      naverMap.setCenter(newCenter);
-      setMarkers(newMarkers);
-    }
-  }, [myCurrentLocation]);
+
 
   return (
     <Wrapper>
@@ -66,13 +43,6 @@ const SearchTab = ({naverMap, markers, setMarkers, myCurrentLocation, setMyCurre
             placeholder="시장명·지역으로 검색"
           />
         </SearchContainer>
-        {/* <MyLocationContainer>
-          <ButtonContainer
-            onClick={useMyLocation}
-          >
-            <FaLocationCrosshairs className="myLocationIcon" size={25} color="#212529" />
-          </ButtonContainer>
-        </MyLocationContainer> */}
       </TabContainer>
       { isListOpened && 
         <SearchList 
@@ -117,16 +87,6 @@ const SearchContainer = styled.div`
   align-items: center;
   padding: 10px 12px;
   gap: 5px;
-`;
-
-const MyLocationContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #212529;
-  border-left: none;
-  padding: 5px;
 `;
 
 const ButtonContainer = styled.button`

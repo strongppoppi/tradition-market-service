@@ -5,6 +5,7 @@ import Map from "../components/Map/Map";
 import SearchTab from "../components/Search/SearchTab";
 import BottomTab from "../components/BottomTab/BottomTab";
 import MarketInfoModal from "../components/MarketModal/MarketInfoModal";
+import LocalTab from "../components/MyLocation/LocalTab";
 
 
 const MapPage = () => {
@@ -24,14 +25,17 @@ const MapPage = () => {
       />
       <SearchTab
         naverMap={naverMap}
-        markers={markers}
-        setMarkers={setMarkers}
-        myCurrentLocation={myCurrentLocation}
-        setMyCurrentLocation={setMyCurrentLocation}
         setSelectedMarket={setSelectedMarket}
       />
       <BottomTab
         currentPath="map"
+      />
+      <LocalTab
+        naverMap={naverMap}
+        markers={markers}
+        setMarkers={setMarkers}
+        myCurrentLocation={myCurrentLocation}
+        setMyCurrentLocation={setMyCurrentLocation}
       />
       <MarketInfoModal marketIndex={selectedMarket} />
     </PageWrapper>
