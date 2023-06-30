@@ -6,7 +6,7 @@ import Carousel from "react-multi-carousel";
 
 const Festival = () => {
   const FESTIVAL_KEY = process.env.REACT_APP_FESTIVAL_ID;
-  const FESTIVAL_API_URL = `http://openapi.seoul.go.kr:8088/${FESTIVAL_KEY}/json/culturalEventInfo/1/15/축제-문화/예술/`;
+  const FESTIVAL_API_URL = `//openapi.seoul.go.kr:8088/${FESTIVAL_KEY}/json/culturalEventInfo/1/15/축제-문화/예술/`;
   const [festivalData, setFestivalData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState();
 
