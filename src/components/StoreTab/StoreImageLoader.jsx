@@ -2,9 +2,8 @@ import React from 'react';
 import { ref, getDownloadURL, listAll } from "firebase/storage";
 import { firebaseStorage } from "../../firebase-config";
 
-/* 현재 이미지 로딩 안되는 문제 있음 */
 
-const StoreImageLoader = ({ marketIndex, storeIndex, setImagesUrl }) => {
+const StoreImageLoader = ({ marketIndex, storeIndex, setImagesUrl, setImageLoaded }) => {
 
     const imageRef = ref(firebaseStorage, `images/stores/${marketIndex}/${storeIndex}`);
 
@@ -13,25 +12,24 @@ const StoreImageLoader = ({ marketIndex, storeIndex, setImagesUrl }) => {
             return res.items;
         })
         .then((list) => {
-            const imageUrlList = [];
-            if (list.length == 0) {
-                imageUrlList.push("https://jkfenner.com/wp-content/uploads/2019/11/default.jpg");
-            } else {
-                list.forEach((itemRef) => {
-                    getDownloadURL(itemRef)
-                        .then((url) => {
-                            imageUrlList.push(url);
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                        });
-                });
-            }
-            console.log(storeIndex, imageUrlList.length, "(ImageLoader)");
-            return imageUrlList;
+            const imageUrlPromises = list.map((itemRef) => {
+                return getDownloadURL(itemRef)
+                    .catch((error) => {
+                        console.log(error);
+                        return null; // 오류 발생 시 null을 반환하거나 다른 기본 URL로 대체할 수 있습니다.
+                    });
+            });
+
+            return Promise.all(imageUrlPromises);
         })
         .then((urlList) => {
-            setImagesUrl(urlList);
+            const filteredUrlList = urlList.filter((url) => url !== null); // null이 아닌 URL만 필터링할 수 있습니다.
+
+            const imageUrlList = filteredUrlList.length > 0 ? filteredUrlList : ["https://jkfenner.com/wp-content/uploads/2019/11/default.jpg"];
+
+            setImageLoaded(true);
+            setImagesUrl(imageUrlList);
+            console.log(storeIndex, "urlList: ", imageUrlList.length, "(ImageLoader)");
         })
         .catch((error) => {
             console.log(error);

@@ -3,7 +3,6 @@ import StoreList from "./StoreList";
 
 
 const StoreTab = ({ marketIndex, storeNumber }) => {
-    //react-bottom-drawer 라이브러리 사용 예정
 
 
     return (
