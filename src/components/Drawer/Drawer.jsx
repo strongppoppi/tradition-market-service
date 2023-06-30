@@ -8,6 +8,13 @@ const Drawer = ({ content }) => {
     const startDragY = useRef(0);
     const windowHeight = window.innerHeight;
 
+    const handleClick = () => {
+        if (visibleHeight == windowHeight) {
+            changeHeight(70);
+        } else if (visibleHeight == 70) {
+            changeHeight(windowHeight);
+        }
+    }
 
     const handleMouseDown = (event) => {
         setIsDragging(true);
@@ -52,6 +59,7 @@ const Drawer = ({ content }) => {
     return (
         <Wrapper ref={dragRef} style={{ height: `${visibleHeight}px` }}>
             <HandleContainer
+                onClick={handleClick}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
