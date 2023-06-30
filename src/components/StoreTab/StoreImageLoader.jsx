@@ -29,7 +29,6 @@ const StoreImageLoader = ({ marketIndex, storeIndex, setImagesUrl, setImageLoade
 
             setImageLoaded(true);
             setImagesUrl(imageUrlList);
-            console.log(storeIndex, "urlList: ", imageUrlList.length, "(ImageLoader)");
         })
         .catch((error) => {
             console.log(error);

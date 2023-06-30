@@ -3,8 +3,6 @@ import { styled } from "styled-components";
 
 const RankingItem = ({ num, name, detail }) => {
 
-    console.log("Ranking", num, name, detail);
-
     return (
         <Wrapper>
             <NumberContainer>
