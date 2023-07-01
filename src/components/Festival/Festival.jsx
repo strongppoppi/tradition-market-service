@@ -45,11 +45,21 @@ const Festival = () => {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
     },
-    mobile: {
+    mobile_430: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
+      partialVisibilityGutter: 170
+    },
+    mobile_390: {
+      breakpoint: { max: 400, min: 0 },
+      items: 1,
       partialVisibilityGutter: 140
-    }
+    },
+    mobile_360: {
+      breakpoint: { max: 370, min: 0 },
+      items: 1,
+      partialVisibilityGutter: 110
+    },
   };
 
   return (
@@ -85,7 +95,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  margin-bottom: 145px;
 `;
 
 const ContentContainer = styled.div`

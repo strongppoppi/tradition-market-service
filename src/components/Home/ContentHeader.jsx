@@ -34,6 +34,7 @@ const Wrapper = styled.div`
   padding-left: 20px;
   padding-right: 15px;
   gap: 7px;
+  margin-bottom: 20px;
 `;
 
 const HeaderSection = styled.div`

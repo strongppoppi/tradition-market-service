@@ -15,11 +15,11 @@ const SplashBody = () => {
 
   return (
     <Wrapper>
-      <Margin size="18rem" />
       <Slogan>
         전통시장이 핫플이 되는 매직!
       </Slogan>
       <LogoImage src={require("../../assets/brand/logo.png")} />
+      <Margin size="4rem" />
     </Wrapper>
   );
 };
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: #FF7455;
 `;

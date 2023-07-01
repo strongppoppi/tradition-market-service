@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   margin: 0 15px;
   border-bottom: 1px solid #DADCE2;
   gap: 3px;
+  margin-bottom: 20px;
 `;
 
 const VillageText = styled.h2`

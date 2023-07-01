@@ -5,7 +5,6 @@ import MarketInfo from "./MarketInfo";
 
 const MarketTab = ({ marketIndex }) => {
 
-
     return (
         <Wrapper>
             <MarketInfo />

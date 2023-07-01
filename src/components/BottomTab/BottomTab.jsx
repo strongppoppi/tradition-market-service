@@ -116,6 +116,7 @@ export default BottomTab;
 const Wrapper = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -123,8 +124,8 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: #fff;
   border-top: 1px solid #E9EBF0;
-  padding-bottom: 40px;
-  padding-top: 10px;
+  padding: 10px 0;
+  padding-bottom: 30px;
 `;
 
 const TabContainer = styled.button`
